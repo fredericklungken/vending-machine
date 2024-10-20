@@ -29,10 +29,10 @@ This repository contains a Spring Boot application that simulates a vending mach
       [2000, 5000]
       ```
     - **Response**:
-      ```json
-      {
-        "message": "1 Cola"
-      }
+      ```array
+      [
+        "1 Cola"
+      ]
       ```
 
 ## Setup Instructions
