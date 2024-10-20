@@ -43,13 +43,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DuplicateEntityException.class)
     public ResponseEntity<String> handleDuplicateEntity(DuplicateEntityException e) {
         return ResponseEntity
-                .status(HttpStatus.CONFLICT) // Return 409 Conflict
+                .status(HttpStatus.CONFLICT)
                 .body(e.getMessage());
     }
 
-    @ExceptionHandler(Exception.class) // Catch-all for any other exceptions
+    @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGeneralException(Exception e) {
-        System.out.println("e" + e);
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body("An unexpected error occurred: " + e.getMessage());
@@ -66,10 +65,10 @@ public class GlobalExceptionHandler {
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .collect(Collectors.toList()));
 
-        System.out.println("ex" + ex.getBindingResult());
+
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body("s"  + errors.entrySet().stream()
+                .body(errors.entrySet().stream()
                         .map(entry -> entry.getKey() + ": " + String.join(", ", entry.getValue()))
                         .collect(Collectors.joining("\n")));
 
