@@ -74,7 +74,8 @@ public class ProductService {
         // Select products from the most expensive to the cheapest
         for (Product product : availableProducts) {
             while (totalMoney >= product.getPrice()) {
-                purchasedProductsMap.put(product.getName(), purchasedProductsMap.getOrDefault(product.getName(), 0) + 1);
+                purchasedProductsMap
+                        .put(product.getName(), purchasedProductsMap.getOrDefault(product.getName(), 0) + 1);
                 totalMoney -= product.getPrice();
             }
         }
